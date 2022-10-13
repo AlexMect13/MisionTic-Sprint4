@@ -18,7 +18,6 @@ def getDB():
 def show():
     db = get_db()
     messages = db.execute(
-        #'SELECT * FROM message WHERE from_id = ? OR to_id = ?',(g.user['id'],g.user['id'])
         'SELECT * FROM message INNER JOIN user ON message.from_id = user.id WHERE from_id=? OR to_id=?' , (g.user['id'],g.user['id']) 
     ).fetchall()
 
